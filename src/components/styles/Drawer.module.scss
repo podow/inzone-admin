@@ -1,0 +1,62 @@
+.nav {
+  position: relative;
+  left: -100%;
+  transition: .5s;
+  width: 0;
+}
+
+.navActive {
+  left: 0;
+  min-width: 240px;
+  flex: 1;
+}
+
+.list {
+  list-style: none;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+.listHeader {
+  padding: 33px 25px;
+  background-color: #263238;
+}
+
+.listHeaderText {
+  font-weight: 600;
+}
+
+.listItem {
+  a {
+    color: #ffffff;
+    width: 100%;
+    display: inline-block;
+    padding: 14px 20px 14px 25px;
+    opacity: .5;
+    &:hover {
+      opacity: 1;
+      background-color: #293846;
+    }
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding-left: 10px;
+  }
+}
+
+.subLinks {
+  overflow: hidden;
+  transition: .5s;
+}
+
+.hiddenSubLinks {
+  height: 0;
+}
+
+.current {
+  border-left: 4px solid #19aa8d;
+  background-color: #293846;
+  opacity: 1 !important;
+}

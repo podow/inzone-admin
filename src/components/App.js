@@ -6,14 +6,14 @@ import Test from './Test';
 import Layout from './Layout';
 
 const App = () => (
-    <Layout>
-        <Router history={ history }>
+    <Router history={ history }>
+        <Layout>
           <Switch>
             <Route exact path="/" component={ Test } />
             <Redirect to="/" />
           </Switch>
-        </Router>
-    </Layout>
+        </Layout>
+    </Router>
 );
 
 export default App;

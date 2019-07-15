@@ -2,56 +2,6 @@
   display: flex;
 }
 
-.nav {
-  position: relative;
-  left: -100%;
-  transition: .5s;
-  width: 0;
-}
-
-.navActive {
-  left: 0;
-  min-width: 240px;
-  flex: 1;
-}
-
-.list {
-  list-style: none;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
-}
-
-.listHeader {
-  padding: 33px 25px;
-  background-color: #263238;
-}
-
-.listHeaderText {
-  font-weight: 600;
-}
-
-.listItem {
-  a {
-    color: #ffffff;
-    width: 100%;
-    display: inline-block;
-    padding: 14px 20px 14px 25px;
-    opacity: .5;
-    &:hover {
-      opacity: 1;
-    }
-  }
-  ul {
-    list-style: none;
-    margin: 0;
-    padding-left: 10px;
-  }
-  &:hover {
-    background-color: #293846;
-  }
-}
-
 .pan {
   height: 2px;
   background-color: #fff;

@@ -4,52 +4,18 @@ import PropTypes from 'prop-types';
 
 import styles from './styles/Layout.module.scss'
 
-import Avatar from './Avatar'
 import Button from './Button'
+import Drawer from './Drawer';
 
 const Layout = ({ children }) => {
     const [isOpen, toggleMenu] = useState(true);
 
     return (
         <div className={styles.wrapper}>
-            <nav
-                className={classNames([
-                    styles.nav,
-                    isOpen && styles.navActive
-                ])}
-            >
-                <ul className={styles.list} >
-                    <li className={styles.listHeader}>
-                        <Avatar name='David Williams' />
-                        <div
-                            className={classNames([
-                                'mt-1',
-                                styles.listHeaderText
-                            ])}
-                        >
-                            David Williams
-                        </div>
-                        <span
-                            className={classNames([
-                                'text-muted',
-                                styles.listHeaderSubText
-                            ])}
-                        >
-                            Art Director
-                        </span>
-                    </li>
-                    <li className={styles.listItem}>
-                        <a href="#">123</a>
-                        <ul>
-                            <li className={styles.listItem}><a href="#">asd</a></li>
-                            <li className={styles.listItem}><a href="#">qwe</a></li>
-                            <li className={styles.listItem}><a href="#">zxc</a></li>
-                        </ul>
-                    </li>
-                    <li className={styles.listItem}><a href="#">456</a></li>
-                    <li className={styles.listItem}><a href="#">789</a></li>
-                </ul>
-            </nav>
+            {/* NAV */}
+            <Drawer isOpen={isOpen} />
+            {/* NAV */}
+
             <main
                 className={classNames([
                     styles.main,
