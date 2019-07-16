@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import styles from './styles/Drawer.module.scss';
 
@@ -26,8 +27,6 @@ const links = [
 ];
 
 const Drawer = ({ isOpen }) => {
-    const [isDropdownOpen, toggleDropdown] = useState(false);
-
     return (
         <nav
             className={classNames([
@@ -36,64 +35,102 @@ const Drawer = ({ isOpen }) => {
             ])}
         >
             <ul className={styles.list}>
-
                 {/* Drawer header */}
-                <li className={styles.listHeader}>
-                    <Avatar name='David Williams'/>
-                    <div
-                        className={classNames([
-                            'mt-1',
-                            styles.listHeaderText
-                        ])}
-                    >
-                        David Williams
-                    </div>
-                    <span
-                        className={classNames([
-                            'text-muted'
-                        ])}
-                    >
-                        Art Director
-                    </span>
-                </li>
+                <DrawerHeader
+                    name='David Williams'
+                    post='Art Director'
+                />
                 {/* Drawer header */}
 
-                {/* Render Links from json */}
+                {/* Render Links */}
                 { links.map(link => (
-                    <li
+                    <MenuItem
                         key={link.id}
-                        className={styles.listItem}
-                    >
-                        <NavLink
-                            to={link.to}
-                            onClick={event => {
-                                event.preventDefault();
-                                toggleDropdown(!isDropdownOpen);
-                            }}
-                            activeClassName={styles.current}
-                        >
-                            { link.name }
-                        </NavLink>
-                        { link.subLinks && (
-                            <ul
-                                className={classNames([
-                                    styles.subLinks,
-                                    !isDropdownOpen && styles.hiddenSubLinks
-                                ])}
-                            >
-                                { link.subLinks.map(subLink => (
-                                    <li key={subLink.id}>
-                                        <NavLink to={subLink.to}>{ subLink.name }</NavLink>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                    </li>
+                        link={link}
+                    />
                 )) }
                 {/* Render Links from json */}
             </ul>
         </nav>
     )
+};
+
+const DrawerHeader = ({ name, post }) => {
+    return (
+        <li className={styles.listHeader}>
+            <Avatar name={name} />
+            <div
+                className={classNames([
+                    'mt-1',
+                    styles.listHeaderText
+                ])}
+            >
+                { name }
+            </div>
+            <span className='text-muted'>{ post }</span>
+        </li>
+    );
+};
+
+DrawerHeader.propTypes = {
+    name: PropTypes.string.isRequired,
+    post: PropTypes.string.isRequired
+};
+
+const MenuItem = ({ link }) => {
+    const [isDropdownOpen, toggleDropdown] = useState(false);
+    const { to, name, subLinks } = link;
+
+    return (
+        <li
+            className={styles.listItem}
+        >
+            <NavLink
+                to={to}
+                onClick={event => {
+                    event.preventDefault();
+                    toggleDropdown(!isDropdownOpen);
+                }}
+                activeClassName={styles.current}
+            >
+                { name }
+            </NavLink>
+            { subLinks && (
+                <ul
+                    className={classNames([
+                        styles.subLinks,
+                        !isDropdownOpen && styles.hiddenSubLinks
+                    ])}
+                >
+                    { subLinks.map(subLink => (
+                        <li key={subLink.id}>
+                            <NavLink to={subLink.to}>{ subLink.name }</NavLink>
+                        </li>
+                    ))}
+                </ul>
+            )}
+        </li>
+    );
+};
+
+DrawerHeader.propTypes = {
+    link: PropTypes.shape({
+        to: PropTypes.string,
+        name: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.element
+        ]).isRequired,
+        subLinks: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.number,
+                to: PropTypes.string,
+                name: PropTypes.oneOfType([
+                    PropTypes.string,
+                    PropTypes.element
+                ]).isRequired,
+            })
+        )
+    })
 };
 
 export default Drawer;
