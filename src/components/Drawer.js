@@ -14,7 +14,7 @@ const links = [
         to: '/',
         subLinks: [
             { id: 2, name: 'Add city', to: '/cities/add' },
-            { id: 2, name: 'Test cites', to: '/cities/test' },
+            { id: 12, name: 'Test cites', to: '/cities/test' },
         ]
     },
     {
