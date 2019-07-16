@@ -13,7 +13,8 @@ const links = [
         name: 'Cities',
         to: '/',
         subLinks: [
-            { id: 2, name: 'Add city', to: '/cities/add' }
+            { id: 2, name: 'Add city', to: '/cities/add' },
+            { id: 2, name: 'Test cites', to: '/cities/test' },
         ]
     },
     {
@@ -99,7 +100,7 @@ const MenuItem = ({ link }) => {
                 <ul
                     className={classNames([
                         styles.subLinks,
-                        !isDropdownOpen && styles.hiddenSubLinks
+                        isDropdownOpen && styles.showSubLinks
                     ])}
                 >
                     { subLinks.map(subLink => (
