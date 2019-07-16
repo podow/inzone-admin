@@ -1,0 +1,14 @@
+.pan {
+  height: 2px;
+  background-color: #fff;
+  display: block;
+  width: 16px;
+  margin: 2px;
+  transition: opacity .5s;
+  &:first-child {
+    opacity: 1;
+  }
+  &:last-child {
+    opacity: 1;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './styles/Avatar.module.scss'
 
 import colorFrom from '../utils/color-from-string';

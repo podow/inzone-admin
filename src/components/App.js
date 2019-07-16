@@ -2,6 +2,7 @@ import React from 'react';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import history from '../utils/history';
+
 import Test from './Test';
 import Layout from './Layout';
 
