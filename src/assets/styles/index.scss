@@ -1,6 +1,25 @@
 @import "grid.min.css";
 @import "react";
 
+.h1, h1 {
+  font-size: 1.5625rem;
+}
+.h2, h2 {
+  font-size: 1.4375rem;
+}
+.h3, h3 {
+  font-size: 1.3125rem;
+}
+.h4, h4 {
+  font-size: 1.1875rem;
+}
+.h5, h5 {
+  font-size: 1.0625rem;
+}
+.h6, h6 {
+  font-size: .9375rem;
+}
+
 .text-muted {
   opacity: .5;
 }
