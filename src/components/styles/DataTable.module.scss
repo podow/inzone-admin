@@ -9,6 +9,22 @@
     }
   }
   th {
+    &.asc {
+      &:before {
+        opacity: 1;
+      }
+      &:after {
+        content: none;
+      }
+    }
+    &.desc {
+      &:before {
+        content: none;
+      }
+      &:after {
+        opacity: 1;
+      }
+    }
     &:after,
     &:before {
       content: '';
@@ -48,14 +64,18 @@
 }
 
 .striped {
-  tbody {
-    tr:nth-of-type(odd) {
-      background-color: rgba(0, 0, 0, .05);
-    }
+  tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, .05);
   }
 }
 
 .bordered td {
   border-left: 1px solid;
   border-right: 1px solid;
+}
+
+.hovered {
+  tbody tr:hover {
+    background-color: rgba(0, 0, 0, .07)
+  }
 }
