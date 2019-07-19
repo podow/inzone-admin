@@ -40,7 +40,10 @@ const Layout = ({ children }) => {
                 {/* Header */}
 
                 {/* Main */}
-                <section className='container-fluid'>
+                <section className={classNames([
+                    'container-fluid',
+                    'py-3'
+                ])}>
                     { children }
                 </section>
                 {/* Main */}
