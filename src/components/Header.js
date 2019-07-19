@@ -24,39 +24,41 @@ const Header = ({ title, breadcrumbs, actions, isOpen, toggleMenu }) => (
                 'container-fluid'
             ])}
         >
-            <div className='row'>
-                <div className='col-10'>
-                    <h1>{ title }</h1>
-                    { breadcrumbs && (
-                        <ol
-                            className={classNames([
-                                styles.breadcrumbs
-                            ])}
-                        >
-                            { breadcrumbs.map((crumb, index) => {
-                                if (crumb.isCurrent) {
-                                    return <li key={index}><strong>{ crumb.title }</strong></li>;
-                                }
-                                return (
-                                    <li key={index}>
-                                        <NavLink to={crumb.to}>
-                                            { crumb.title }
-                                        </NavLink>
-                                    </li>
-                                );
-                            }) }
-                        </ol>
+            <div className='container-fluid'>
+                <div className='row'>
+                    <div className='col-10'>
+                        <h1>{ title }</h1>
+                        { breadcrumbs && (
+                            <ol
+                                className={classNames([
+                                    styles.breadcrumbs
+                                ])}
+                            >
+                                { breadcrumbs.map((crumb, index) => {
+                                    if (crumb.isCurrent) {
+                                        return <li key={index}><strong>{ crumb.title }</strong></li>;
+                                    }
+                                    return (
+                                        <li key={index}>
+                                            <NavLink to={crumb.to}>
+                                                { crumb.title }
+                                            </NavLink>
+                                        </li>
+                                    );
+                                }) }
+                            </ol>
+                        ) }
+                    </div>
+                    { actions && (
+                        <div className='col-2'>
+                            { actions.map((action, index) => (
+                                <Fragment key={index}>
+                                    { action }
+                                </Fragment>
+                            )) }
+                        </div>
                     ) }
                 </div>
-                { actions && (
-                    <div className='col-2'>
-                        { actions.map((action, index) => (
-                            <Fragment key={index}>
-                                { action }
-                            </Fragment>
-                        )) }
-                    </div>
-                ) }
             </div>
         </div>
     </header>

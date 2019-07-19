@@ -43,7 +43,17 @@ const DataTable = ({ striped, bordered, hovered, data }) => {
                     { data.rows.map(row => (
                         <tr key={row.id}>
                             { data.cols.map(col => (
-                                <td key={col.label}>{row[col.field]}</td>
+                                <td key={col.label}>
+                                    {
+                                        typeof row[col.field] !== "boolean"
+                                            ? row[col.field]
+                                            : (
+                                                row[col.field]
+                                                    ? 'true'
+                                                    : 'false'
+                                            )
+                                    }
+                                </td>
                             )) }
                         </tr>
                     )) }
