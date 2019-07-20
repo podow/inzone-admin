@@ -1,33 +1,52 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import * as DT from 'react-data-table-component';
 import PropTypes from 'prop-types';
+
+import styles from './styles/DataTable.module.scss'
 
 /**
  * DataTable Component wrapper
  * https://github.com/jbetancur/react-data-table-component
- *
- * @param title
- * @param bordered
- * @param data
- * @param hovered
- * @param striped
- * @returns {*}
- * @constructor
  */
 const DataTable = (
     {
         title,
+        headerActions,
         bordered,
         data,
         hovered,
-        striped
+        striped,
+        actions
     }) => {
-    data.cols = [ ...data.cols, { name: 'Actions', selector: 'actions'}];
-    // data.rows = [ ...data.rows, { actions: [ { id: 1, action: 'delete'}, { id: 2, action: 'edit'} ] }];
+    if (!!actions) {
+        data.cols = [ ...data.cols, {
+            name: 'Actions',
+            selector: 'actions',
+            cell: ({ actions }) => actions.map((action, idx) => (
+                <Link
+                    key={idx}
+                    className={styles.actions}
+                    to={action.url}
+                >
+                    { action.label }
+                </Link>
+            ))
+        }];
+
+        data.rows = data.rows.map(row => (
+            {
+                ...row,
+                actions
+            }
+        ));
+    }
+
     return (
         <DT
             title={title}
             noHeader={!title}
+            actions={headerActions}
             bordered={bordered}
             columns={data.cols}
             data={data.rows}
@@ -52,7 +71,7 @@ DataTable.propTypes = {
 
     // Header types
     title: PropTypes.string,
-    actions: PropTypes.oneOfType([
+    headerActions: PropTypes.oneOfType([
         PropTypes.element,
         PropTypes.arrayOf(PropTypes.element)
     ]),
@@ -120,6 +139,17 @@ DataTable.propTypes = {
         ).isRequired,
         rows: PropTypes.arrayOf(PropTypes.object).isRequired
     }).isRequired,
+
+    // Data actions types
+    actions: PropTypes.arrayOf(
+        PropTypes.shape({
+            to: PropTypes.string,
+            label: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.element
+            ])
+        })
+    ),
 
     // Functional types
     onTableUpdate: PropTypes.func,

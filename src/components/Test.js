@@ -39,6 +39,10 @@ const Test = () => {
     return (
         <Card useBody={false}>
             <DataTable
+                actions={[
+                    { url: 'edit', label: 'Edit' },
+                    { url: 'delete', label: <span className='fa fa-trash-o' /> },
+                ]}
                 data={{ cols, rows }}
                 hovered
             />
