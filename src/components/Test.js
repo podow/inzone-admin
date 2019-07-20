@@ -7,32 +7,19 @@ import axios from 'axios';
 const Test = () => {
     const cols = [
         {
-            label: 'ID',
-            field: 'id'
+            name: 'ID',
+            selector: 'id',
+            sortable: true
         },
         {
-            label: 'Name',
-            field: 'name'
+            name: 'Name',
+            selector: 'name',
+            sortable: true
         },
         {
-            label: 'Country',
-            field: 'country',
-        },
-        {
-            label: 'isDeleted',
-            field: 'isDeleted',
-        },
-        {
-            label: 'published',
-            field: 'published',
-        },
-        {
-            label: 'createdAt',
-            field: 'createdAt',
-        },
-        {
-            label: 'updatedAt',
-            field: 'updatedAt',
+            name: 'Country',
+            selector: 'country',
+            sortable: true
         }
     ];
     const [rows, setRows] = useState([]);
@@ -50,13 +37,10 @@ const Test = () => {
     }, []);
 
     return (
-        <Card
-            title={<h5>Card title</h5>}
-            useBody={false}
-        >
+        <Card useBody={false}>
             <DataTable
-                striped
                 data={{ cols, rows }}
+                hovered
             />
         </Card>
     )
