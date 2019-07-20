@@ -143,7 +143,7 @@ DataTable.propTypes = {
     // Data actions types
     actions: PropTypes.arrayOf(
         PropTypes.shape({
-            to: PropTypes.string,
+            url: PropTypes.string,
             label: PropTypes.oneOfType([
                 PropTypes.string,
                 PropTypes.element
