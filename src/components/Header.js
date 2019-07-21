@@ -40,9 +40,7 @@ const Header = ({ title, breadcrumbs, actions, isOpen, toggleMenu }) => (
                                     }
                                     return (
                                         <li key={index}>
-                                            <NavLink to={crumb.to}>
-                                                { crumb.title }
-                                            </NavLink>
+                                            <NavLink to={crumb.url}>{ crumb.title }</NavLink>
                                         </li>
                                     );
                                 }) }
@@ -66,13 +64,11 @@ const Header = ({ title, breadcrumbs, actions, isOpen, toggleMenu }) => (
 
 Header.propTypes = {
     title: PropTypes.string,
-    actions: PropTypes.arrayOf(
-        PropTypes.element
-    ),
+    actions: PropTypes.arrayOf(PropTypes.element),
     breadcrumbs: PropTypes.arrayOf(
         PropTypes.shape({
             title: PropTypes.string.isRequired,
-            to: PropTypes.string,
+            url: PropTypes.string,
             isCurrent: PropTypes.bool
         })
     )

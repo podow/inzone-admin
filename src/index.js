@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './assets/styles/index.scss';
-import App from './components/App';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import configureStore from './store';
@@ -21,7 +21,7 @@ const render = Component => {
 render(App);
 
 if (module.hot) {
-    module.hot.accept('./components/App', () => {
+    module.hot.accept('./App', () => {
         render(App);
     })
 }

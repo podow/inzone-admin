@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import styles from './styles/Layout.module.scss'
 
@@ -8,7 +9,7 @@ import Drawer from './Drawer';
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = ({ children }) => {
+const Layout = ({ title, breadcrumbs, children }) => {
     const [isOpen, toggleMenu] = useState(true);
 
     return (
@@ -31,8 +32,8 @@ const Layout = ({ children }) => {
                         <Button>zxc</Button>
                     ]}
                     breadcrumbs={[
-                        { title: 'Home', to: '/', },
-                        { title: 'Layout', to: '/layout', isCurrent: true }
+                        { title: 'Home', url: '/', },
+                        { title: 'Layout', url: '/layout', isCurrent: true }
                     ]}
                     isOpen={isOpen}
                     toggleMenu={toggleMenu}
@@ -56,7 +57,14 @@ const Layout = ({ children }) => {
     );
 };
 
-Layout.propTypes = {};
+Layout.propTypes = {
+    title: PropTypes.string,
+    breadcrumbs: PropTypes.arrayOf(PropTypes.shape({
+        title: PropTypes.string,
+        url: PropTypes.string,
+        isCurrent: PropTypes.bool
+    }))
+};
 
 Layout.defaultProps = {};
 
