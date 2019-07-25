@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import is from 'is_js'
-import axios from 'axios';
+import { auth } from '../actions/auth';
 
 import styles from './styles/LoginPage.module.scss'
 
-import Input from '../components/Input'
+import FormGroup from '../components/FormGroup'
 import Button from '../components/Button'
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
   constructor(props) {
     super(props);
 
@@ -90,7 +91,7 @@ export default class LoginPage extends Component {
     return Object.keys(this.state.formControls).map((controlName, index) => {
       const control = this.state.formControls[controlName];
       return (
-        <Input
+        <FormGroup
           className={styles.input}
           key={controlName + index}
           type={control.type}
@@ -107,25 +108,13 @@ export default class LoginPage extends Component {
     });
   }
 
-  submitHandler = async (event) => {
+  submitHandler = (event) => {
     event.preventDefault();
 
+    const { email, password } = this.state.formControls;
+
     if (this.state.isFormValid) {
-      const res = await axios({
-        method: 'POST',
-        url: 'https://inzone-api.herokuapp.com/api/v1/users/login',
-        headers: {
-          ContentType: 'application/json'
-        },
-        data: {
-          email: this.state.formControls.email.value,
-          hash: this.state.formControls.password.value
-        }
-      });
-
-      const { user: { token } } = res.data;
-
-      localStorage.setItem('token', token);
+      this.props.auth(email.value, password.value);
     }
   };
 
@@ -141,3 +130,9 @@ export default class LoginPage extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  auth: (email, password) => dispatch(auth(email, password))
+});
+
+export default connect(null, mapDispatchToProps)(LoginPage);

@@ -12,8 +12,8 @@ import LayoutRoute from './containers/LayoutRoute';
 const App = () => (
     <Router history={ history }>
       <Switch>
-        <LayoutRoute exact path='/' layout={Layout} component={Test} />
-        <LayoutRoute exact path='/login' layout={LoginLayout} component={ LoginPage } />
+        <LayoutRoute exact path='/dashboard' layout={Layout} component={Test} />
+        <LayoutRoute exact path='/' layout={LoginLayout} component={ LoginPage } />
         <Redirect to='/' />
       </Switch>
     </Router>
