@@ -6,7 +6,7 @@ import styles from './styles/Layout.module.scss'
 
 import Button from './Button'
 import Drawer from './Drawer';
-import Header from './Header';
+import Header from '../containers/Header';
 import Footer from './Footer';
 
 const Layout = ({ title, breadcrumbs, children }) => {

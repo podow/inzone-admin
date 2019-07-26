@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import is from 'is_js'
+import { Redirect } from 'react-router-dom';
+import is from 'is_js';
+
 import { auth } from '../actions/auth';
 
 import styles from './styles/LoginPage.module.scss'
@@ -119,7 +121,10 @@ class LoginPage extends Component {
   };
 
   render() {
-    return (
+    const { isAuthenticated } = this.props;
+    return isAuthenticated ? (
+      <Redirect to='/dashboard' />
+    ) : (
       <div className={styles.wrapper}>
         <h3><span className={styles.brandName}>INZONE</span> Admin panel login</h3>
         <form onSubmit={this.submitHandler}>
@@ -131,8 +136,12 @@ class LoginPage extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
 const mapDispatchToProps = dispatch => ({
   auth: (email, password) => dispatch(auth(email, password))
 });
 
-export default connect(null, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

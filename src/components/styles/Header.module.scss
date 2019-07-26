@@ -1,3 +1,17 @@
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout {
+  cursor: pointer;
+  transition: .25s;
+  opacity: .9;
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .headerText {
   background-color: #fff;
   border-bottom: 1px solid #e7eaec;
