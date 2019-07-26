@@ -52,7 +52,7 @@ export function receiveAuth() {
     const token = localStorage.getItem('token');
 
     if (!token) {
-      dispatch({
+      return dispatch({
         type: RECEIVE_AUTH_FAILED
       })
     }
@@ -63,7 +63,7 @@ export function receiveAuth() {
 
     return axios({
       method: 'GET',
-      url: '/api/v1/users/current',
+      url: process.env.REACT_APP_API_HOST+'/api/v1/users/current',
       headers: {
         Authorization: `Token ${token}`
       }
@@ -71,7 +71,7 @@ export function receiveAuth() {
       const { token } = user;
       localStorage.setItem('token', token);
 
-      dispatch({
+      return dispatch({
         type: RECEIVE_AUTH_SUCCESS,
         payload: { token, user }
       })
