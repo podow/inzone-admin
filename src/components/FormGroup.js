@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 
 import styles from './styles/FormGroup.module.scss';
 
+const isInvalid = ({valid, touched, shouldvalidate}) => {
+  return !valid && shouldvalidate && touched
+};
+
 const FormGroup = (props) => {
   const inputType = props.type || 'text';
   const htmlFor = props.htmlFor || `${inputType}-${Math.random()}`;
-
-  const isInvalid = ({valid, touched, shouldValidate}) => {
-    return !valid && shouldValidate && touched
-  };
 
   return (
     <div
@@ -27,7 +27,7 @@ const FormGroup = (props) => {
         onChange={props.onChange}
         { ...props }
       />
-      { isInvalid(props) && <span>{props.errorMessage || 'Введите верное значение'}</span> }
+      { isInvalid(props) && <span>{props.errormessage || 'Введите верное значение'}</span> }
     </div>
   )
 };
@@ -35,12 +35,15 @@ const FormGroup = (props) => {
 FormGroup.propTypes = {
   type: PropTypes.string,
   htmlFor: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool
+  ]),
   placeholder: PropTypes.string,
-  errorMessage: PropTypes.string,
+  errormessage: PropTypes.string,
   onChange: PropTypes.func,
   valid: PropTypes.bool,
-  shouldValidate: PropTypes.bool,
+  shouldvalidate: PropTypes.bool,
   touched: PropTypes.bool
 };
 

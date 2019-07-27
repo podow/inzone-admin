@@ -10,13 +10,13 @@ import Layout from './components/Layout';
 import LoginLayout from './components/LoginLayout';
 import LoginPage from './containers/LoginPage';
 import Cities from './components/Cities';
-import CityForm from './components/CityForm';
+import Form from './containers/Form';
 
 const App = () => (
     <Router history={ history }>
       <Switch>
         <PrivateRoute exact path='/cities' layout={Layout} component={Cities} />
-        <PrivateRoute exact path='/cities/add' layout={Layout} component={CityForm} />
+        <PrivateRoute exact path='/cities/add' layout={Layout} component={Form} />
         <LayoutRoute exact path='/' layout={LoginLayout} component={LoginPage} />
         <Redirect to='/' />
       </Switch>

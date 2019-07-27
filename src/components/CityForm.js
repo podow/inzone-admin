@@ -18,7 +18,11 @@ export default class CityForm extends Component {
         }, { required: true }),
         country: createControl({
           placeholder: 'Страна'
-        }, { required: true })
+        }, { required: true }),
+        published: createControl({
+          placeholder: 'Опубиковано',
+          type: 'checkbox'
+        })
       }
     };
   }
@@ -27,7 +31,7 @@ export default class CityForm extends Component {
     const formControls = { ...this.state.formControls };
     const control = { ...formControls[controlName] };
 
-    control.value = event.target.value;
+    control.value = event.target.value || event.target.checked;
     control.touched = true;
     control.valid = validate(control.value, control.validation);
 
@@ -54,25 +58,31 @@ export default class CityForm extends Component {
             key={controlName + index}
             placeholder={control.placeholder}
             value={control.value}
-            valid={control.valid}
-            shoulValidate={!!control.validation}
-            touched={control.touched}
-            errorMessage={control.errorMessage}
+            // valid={control.valid}
+            // shouldvalidate={!!control.validation}
+            // touched={control.touched}
+            type={control.type}
+            errormessage={control.errorMessage}
             onChange={event => this.onChangeHandler(event, controlName)}
           />
       )
     })
   }
 
-  submitHandler(event) {
+  submitHandler = event => {
     event.preventDefault();
-    console.log(123);
-  }
+
+    const { name, country, published } = this.state.formControls;
+
+    if (this.state.isFormValid) {
+      this.props.add({ name: name.value, country: country.value, published: published.value });
+    }
+  };
 
   render() {
     return (
       <Card title={<h5>Add city</h5>}>
-        <form onSubmit={this.submitHandler}>
+        <form onSubmit={this.submitHandler} style={{ textAlign: 'right' }}>
           { this.renderControls() }
           <Button type='submit'>Save</Button>
         </form>
