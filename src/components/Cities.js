@@ -4,7 +4,7 @@ import Card from './Card';
 
 import axios from 'axios';
 
-const Test = () => {
+const Cities = () => {
     const cols = [
         {
             name: 'ID',
@@ -50,4 +50,4 @@ const Test = () => {
     )
 };
 
-export default Test;
+export default Cities;

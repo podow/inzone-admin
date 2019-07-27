@@ -1,15 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import styles from './styles/FormGroup.module.scss';
-
-function isInvalid({valid, touched, shouldValidate}) {
-  return !valid && shouldValidate && touched
-}
 
 const FormGroup = (props) => {
   const inputType = props.type || 'text';
   const htmlFor = props.htmlFor || `${inputType}-${Math.random()}`;
+
+  const isInvalid = ({valid, touched, shouldValidate}) => {
+    return !valid && shouldValidate && touched
+  };
 
   return (
     <div
@@ -24,10 +25,23 @@ const FormGroup = (props) => {
         value={props.value}
         placeholder={props.placeholder}
         onChange={props.onChange}
+        { ...props }
       />
-      {isInvalid(props) && <span>{props.errorMessage || 'Введите верное значение'}</span>}
+      { isInvalid(props) && <span>{props.errorMessage || 'Введите верное значение'}</span> }
     </div>
   )
+};
+
+FormGroup.propTypes = {
+  type: PropTypes.string,
+  htmlFor: PropTypes.string,
+  value: PropTypes.string,
+  placeholder: PropTypes.string,
+  errorMessage: PropTypes.string,
+  onChange: PropTypes.func,
+  valid: PropTypes.bool,
+  shouldValidate: PropTypes.bool,
+  touched: PropTypes.bool
 };
 
 export default FormGroup;

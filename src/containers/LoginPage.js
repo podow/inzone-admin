@@ -123,7 +123,7 @@ class LoginPage extends Component {
   render() {
     const { isAuthenticated } = this.props;
     return isAuthenticated ? (
-      <Redirect to='/dashboard' />
+      <Redirect to='/cities' />
     ) : (
       <div className={styles.wrapper}>
         <h3><span className={styles.brandName}>INZONE</span> Admin panel login</h3>
