@@ -47,7 +47,10 @@ const Header = ({title, breadcrumbs, actions, isOpen, toggleMenu, logout}) => (
             ) }
           </div>
           { actions && (
-            <div className='col-2'>
+            <div className={classNames([
+              'col-2',
+              styles.actions
+            ])}>
               { actions.map((action, index) => (
                 <Fragment key={index}>
                   { action }
