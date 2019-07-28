@@ -13,14 +13,14 @@ import Cities from './components/Cities';
 import Form from './containers/Form';
 
 const App = () => (
-    <Router history={ history }>
-      <Switch>
-        <PrivateRoute exact path='/cities' layout={Layout} component={Cities} />
-        <PrivateRoute exact path='/cities/add' layout={Layout} component={Form} />
-        <LayoutRoute exact path='/' layout={LoginLayout} component={LoginPage} />
-        <Redirect to='/' />
-      </Switch>
-    </Router>
+  <Router history={history}>
+    <Switch>
+      <PrivateRoute exact path='/cities' layout={Layout} component={Cities}/>
+      <PrivateRoute exact path='/cities/add' layout={Layout} component={Form}/>
+      <LayoutRoute exact path='/' layout={LoginLayout} component={LoginPage}/>
+      <Redirect to='/'/>
+    </Switch>
+  </Router>
 );
 
 export default App;

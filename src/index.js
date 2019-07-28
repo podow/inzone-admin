@@ -11,20 +11,20 @@ import configureStore from './store';
 const store = configureStore();
 
 const render = Component => {
-    ReactDOM.render(
-        <Provider store={store}>
-            <Component />
-        </Provider>,
-        document.getElementById('root')
-    );
+  ReactDOM.render(
+    <Provider store={store}>
+      <Component/>
+    </Provider>,
+    document.getElementById('root')
+  );
 };
 
 render(App);
 
 if (module.hot) {
-    module.hot.accept('./App', () => {
-        render(App);
-    })
+  module.hot.accept('./App', () => {
+    render(App);
+  })
 }
 
 // Setting axios

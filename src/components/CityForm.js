@@ -54,17 +54,17 @@ export default class CityForm extends Component {
       const control = this.state.formControls[controlName];
 
       return (
-          <FormGroup
-            key={controlName + index}
-            placeholder={control.placeholder}
-            value={control.value}
-            // valid={control.valid}
-            // shouldvalidate={!!control.validation}
-            // touched={control.touched}
-            type={control.type}
-            errormessage={control.errorMessage}
-            onChange={event => this.onChangeHandler(event, controlName)}
-          />
+        <FormGroup
+          key={controlName + index}
+          placeholder={control.placeholder}
+          value={control.value}
+          // valid={control.valid}
+          // shouldvalidate={!!control.validation}
+          // touched={control.touched}
+          type={control.type}
+          errormessage={control.errorMessage}
+          onChange={event => this.onChangeHandler(event, controlName)}
+        />
       )
     })
   }
