@@ -1,12 +1,13 @@
 import { createControl } from '../utils/formValidator';
 
-import FormComponent from './FormComponent';
+import FormContainer from '../containers/FormContainer';
 
-export default class CityForm extends FormComponent {
+export default class CityForm extends FormContainer {
   constructor(props) {
     super(props);
 
-    this.title = 'Add city';
+    this.title = 'Добавить город';
+    this.buttonLabel = 'Сохранить';
 
     this.state = {
       isFormValid: false,

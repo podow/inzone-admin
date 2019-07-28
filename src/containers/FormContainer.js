@@ -2,12 +2,16 @@ import React, { PureComponent } from 'react';
 
 import { validate } from '../utils/formValidator';
 
-import FormGroup from './FormGroup';
-import Button from './Button';
-import Card from './Card';
+import FormGroup from '../components/FormGroup';
+import Button from '../components/Button';
+import Card from '../components/Card';
 
 export default class FormComponent extends PureComponent {
   onChangeHandler = (event, controlName) => {
+    if (!this.state.formControls) {
+      throw new TypeError('form state must be defined');
+    }
+
     const formControls = { ...this.state.formControls };
     const control = { ...formControls[controlName] };
 
@@ -31,6 +35,10 @@ export default class FormComponent extends PureComponent {
 
   submitHandler = event => {
     event.preventDefault();
+
+    if (!this.state.formControls) {
+      throw new TypeError('form state must be defined');
+    }
 
     let data = {};
 
@@ -56,7 +64,7 @@ export default class FormComponent extends PureComponent {
 
   renderControls() {
     if (!this.state.formControls) {
-      throw new TypeError('formControls state must be defined');
+      throw new TypeError('form state must be defined');
     }
 
     return Object.keys(this.state.formControls).map((controlName, index) => {
