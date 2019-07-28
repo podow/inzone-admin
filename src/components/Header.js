@@ -8,14 +8,14 @@ import styles from './styles/Header.module.scss';
 import Burger from './Burger';
 import Icon from './Icon';
 
-const Header = ({title, breadcrumbs, actions, isOpen, toggleMenu, logout}) => (
+const Header = ({title, breadcrumbs, actions, toggleDrawer, logout}) => (
   <header className='mt-3'>
     <div className={classNames([
       'container-fluid',
       'mb-3',
       styles.top
     ])}>
-      <Burger onClick={() => { toggleMenu(!isOpen) }}/>
+      <Burger onClick={() => { toggleDrawer() }}/>
       <span className={styles.logout} onClick={logout}>
         <Icon icon='sign-out' size='lg'/> Log out
       </span>

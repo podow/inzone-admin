@@ -1,27 +1,26 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 import styles from './styles/Layout.module.scss'
 
-import Button from './Button'
-import Drawer from './Drawer';
 import Header from '../containers/Header';
+import Drawer from '../containers/Drawer';
 import Footer from './Footer';
 
-const Layout = ({ title, breadcrumbs, children }) => {
-  const [isOpen, toggleMenu] = useState(true);
+import Button from './Button'
 
+const Layout = ({ isDrawerOpen, children }) => {
   return (
     <div className={styles.wrapper}>
       {/* NAV */}
-      <Drawer isOpen={isOpen}/>
+      <Drawer />
       {/* NAV */}
 
       <main
         className={classNames([
           styles.main,
-          !isOpen && styles.mainFull
+          !isDrawerOpen && styles.mainFull
         ])}
       >
         {/* Header */}
@@ -35,8 +34,6 @@ const Layout = ({ title, breadcrumbs, children }) => {
             { title: 'Home', url: '/' },
             { title: 'Layout', url: '/layout', isCurrent: true }
           ]}
-          isOpen={isOpen}
-          toggleMenu={toggleMenu}
         />
         {/* Header */}
 
@@ -50,7 +47,7 @@ const Layout = ({ title, breadcrumbs, children }) => {
         {/* Main */}
 
         {/* Footer */}
-        <Footer/>
+        <Footer />
         {/* Footer */}
       </main>
     </div>

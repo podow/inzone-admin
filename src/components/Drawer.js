@@ -27,12 +27,12 @@ const links = [
   }
 ];
 
-const Drawer = ({ isOpen }) => {
+const Drawer = ({ isDrawerOpen }) => {
   return (
     <nav
       className={classNames([
         styles.nav,
-        isOpen && styles.navActive
+        isDrawerOpen && styles.navActive
       ])}
     >
       <ul className={styles.list}>
