@@ -19,6 +19,9 @@ const FormGroup = (props) => {
         isInvalid(props) && styles.invalid
       ])}
     >
+      <label htmlFor={htmlFor}>
+        { props.label }
+      </label>
       <input
         type={inputType}
         id={htmlFor}
@@ -39,6 +42,7 @@ FormGroup.propTypes = {
     PropTypes.string,
     PropTypes.bool
   ]),
+  label: PropTypes.string,
   placeholder: PropTypes.string,
   errormessage: PropTypes.string,
   onChange: PropTypes.func,
