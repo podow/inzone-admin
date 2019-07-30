@@ -27,7 +27,7 @@ const links = [
   }
 ];
 
-const Drawer = ({ isDrawerOpen }) => {
+const Drawer = ({ isDrawerOpen, user }) => {
   return (
     <nav
       className={classNames([
@@ -38,8 +38,8 @@ const Drawer = ({ isDrawerOpen }) => {
       <ul className={styles.list}>
         {/* Drawer header */}
         <DrawerHeader
-          name='David Williams'
-          post='Art Director'
+          name={user && `${user.firstName} ${user.lastName}`}
+          post={user && user.email}
         />
         {/* Drawer header */}
 

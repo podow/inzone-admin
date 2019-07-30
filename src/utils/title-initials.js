@@ -1,4 +1,4 @@
-const titleInitial = title => title
+const titleInitial = title => title && title
   .split(' ')
   .map(word => word[0])
   .map(char => char.toUpperCase())

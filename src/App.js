@@ -9,7 +9,7 @@ import PrivateRoute from './containers/PrivateRoute';
 import Layout from './components/Layout';
 import LoginLayout from './components/LoginLayout';
 import LoginPage from './containers/LoginPage';
-import Cities from './components/Cities';
+import Cities from './containers/Cities';
 import Form from './containers/Form';
 
 const App = () => (

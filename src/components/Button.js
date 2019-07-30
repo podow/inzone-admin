@@ -3,11 +3,11 @@ import { darken } from 'polished'
 import PropTypes from 'prop-types';
 
 const Button = styled.button`
-    padding: 4px;
+    padding: 5px;
     border-radius: 3px;
     color: ${props => props.color};
     background-color: ${props => props.background};
-    border-color: ${props => props.background};
+    border: 0;
     cursor: pointer;
     font-size: ${props => props.fontSize};
     

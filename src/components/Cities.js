@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import DataTable from './DataTable';
-import Card from './Card';
-
 import axios from 'axios';
-import Icon from './Icon';
+
+import DataList from './DataList';
 
 const Cities = () => {
   const cols = [
@@ -38,17 +36,7 @@ const Cities = () => {
   }, []);
 
   return (
-    <Card useBody={false}>
-      <DataTable
-        actions={[
-          { url: 'view', label: <Icon icon='eye'/> },
-          { url: 'edit', label: <Icon icon='pencil'/> },
-          { url: 'delete', label: <Icon icon='trash'/> },
-        ]}
-        data={{ cols, rows }}
-        hovered
-      />
-    </Card>
+    <DataList cols={cols} data={rows} />
   )
 };
 

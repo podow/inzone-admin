@@ -4,7 +4,7 @@ const colors = [
 ];
 
 const colorFrom = string => {
-  const index = string
+  const index = string && string
     .toString()
     .split('')
     .map(char => char.charCodeAt())

@@ -20,7 +20,7 @@ class LoginPage extends Component {
         email: {
           value: '',
           type: 'email',
-          label: 'Email',
+          placeholder: 'Email',
           errorMessage: 'Введите корректный e-mail',
           valid: false,
           touched: false,
@@ -32,7 +32,7 @@ class LoginPage extends Component {
         password: {
           value: '',
           type: 'password',
-          label: 'Пароль',
+          placeholder: 'Пароль',
           errorMessage: 'Введите корректный пароль',
           valid: false,
           touched: false,
@@ -100,8 +100,7 @@ class LoginPage extends Component {
           value={control.value}
           valid={control.valid}
           touched={control.touched}
-          label={control.label}
-          placeholder={control.label}
+          placeholder={control.placeholder}
           errorMessage={control.errorMessage}
           shouldValidate={!!control.validation}
           onChange={event => this.onChangeHandler(event, controlName)}
